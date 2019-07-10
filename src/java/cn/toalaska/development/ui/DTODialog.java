@@ -2,6 +2,7 @@ package cn.toalaska.development.ui;
 
 
 
+import cn.toalaska.development.MyService;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
@@ -10,6 +11,8 @@ import javax.swing.*;
 
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.List;
+
 @Log4j
 public class DTODialog extends JDialog {
     private JPanel contentPane;
@@ -20,6 +23,7 @@ public class DTODialog extends JDialog {
 
     public DTODialog() {
         setContentPane(contentPane);
+
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
         init();
@@ -58,18 +62,23 @@ public class DTODialog extends JDialog {
 
     private void init() {
 
-        ArrayList<Param> paramList = new ArrayList<>();
-        paramList.add(new Param("姓名","name","String",true,""));
-        paramList.add(new Param("年龄","age","Integer",false,""));
+//        ArrayList<Param> paramList = new ArrayList<>();
+//        paramList.add(new Param("姓名","name","String",true,""));
+//        paramList.add(new Param("年龄","age","Integer",false,""));
+
+        List<Param> paramList= MyService.getInstance().getParams();
         dataModel = new MyTableModel(paramList);
         table1.setModel(dataModel);
 
     }
 
     private void onOK() {
-         log.info("data="+dataModel.getParamList());
+        for (Param param : dataModel.getParamList()) {
+            System.out.println("data="+param);
 
-       //dispose();
+        }
+
+       dispose();
     }
 
     private void onCancel() {
