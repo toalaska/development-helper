@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="development-helper:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>development-helper</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="zephyr-fjjcpt.war">
+      <element id="artifact" artifact-name="development-helper:war exploded" />
+    </root>
+  </artifact>
+</component>
